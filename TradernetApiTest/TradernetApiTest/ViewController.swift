@@ -12,9 +12,29 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        connectToAPI()
     }
+}
 
+extension ViewController {
+    func connectToAPI() {
+        guard let socket = TradernetApiService.socket else {
+            return
+        }
+        
+        socket.connect()
+        
+        socket.on(clientEvent: .connect) { (data, ack) in
+            print("socket connected")
+        }
+        
+        socket.emit("sup_updateSecurities2", with: kTickersIDsArray)
+        
+        socket.on("q") { (data, ack) in
+            print(data)
+        }
+        
 
+    }
 }
 
