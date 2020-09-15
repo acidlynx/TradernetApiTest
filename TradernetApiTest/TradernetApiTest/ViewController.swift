@@ -18,23 +18,25 @@ class ViewController: UIViewController {
 
 extension ViewController {
     func connectToAPI() {
-        guard let socket = TradernetApiService.socket else {
-            return
+        TradernetApiService.default.socket.on(clientEvent: .connect) { (data, ack) in
+            debugPrint("DDDEBUG: socket connected")
+            TradernetApiService.default.socket.emit("sup_updateSecurities2", with: [kTickersIDsArray])
         }
         
-        socket.connect()
-        
-        socket.on(clientEvent: .connect) { (data, ack) in
-            print("socket connected")
+        TradernetApiService.default.socket.on(clientEvent: .error) { (data, ack) in
+            debugPrint("error with data:\(data)")
         }
         
-        socket.emit("sup_updateSecurities2", with: kTickersIDsArray)
-        
-        socket.on("q") { (data, ack) in
-            print(data)
+        TradernetApiService.default.socket.on("q") { [weak self] (data, ack) in
+            guard let self = self else { return }
+            self.showNewData(data: data)
         }
-        
-
+         
+        TradernetApiService.default.socket.connect()
+    }
+    
+    func showNewData(data: [Any]) {
+        debugPrint("DDDEBUG: new data: \(data)")
     }
 }
 
