@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,12 @@
 		CE361BCE25051E4E00F0BA43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE361BCC25051E4E00F0BA43 /* LaunchScreen.storyboard */; };
 		CE361BD925051E4E00F0BA43 /* TradernetApiTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE361BD825051E4E00F0BA43 /* TradernetApiTestTests.swift */; };
 		CE361BE425051E4E00F0BA43 /* TradernetApiTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE361BE325051E4E00F0BA43 /* TradernetApiTestUITests.swift */; };
+		CE7BD1B025052A0C00711212 /* TradernetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BD1AF25052A0C00711212 /* TradernetService.swift */; };
+		CE7BD1B125052A0C00711212 /* TradernetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BD1AF25052A0C00711212 /* TradernetService.swift */; };
+		CE7BD1B225052A0C00711212 /* TradernetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BD1AF25052A0C00711212 /* TradernetService.swift */; };
+		CE7BD1B925052F3000711212 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BD1B825052F3000711212 /* Settings.swift */; };
+		CE7BD1BA25052F3000711212 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BD1B825052F3000711212 /* Settings.swift */; };
+		CE7BD1BB25052F3000711212 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BD1B825052F3000711212 /* Settings.swift */; };
 		D4ED6BE638A1D5A526E2A6A8 /* Pods_TradernetApiTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 944A2508DB7B687D757321DD /* Pods_TradernetApiTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +57,8 @@
 		CE361BDF25051E4E00F0BA43 /* TradernetApiTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TradernetApiTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE361BE325051E4E00F0BA43 /* TradernetApiTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradernetApiTestUITests.swift; sourceTree = "<group>"; };
 		CE361BE525051E4E00F0BA43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE7BD1AF25052A0C00711212 /* TradernetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradernetService.swift; sourceTree = "<group>"; };
+		CE7BD1B825052F3000711212 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D9032F3024626132170368DF /* Pods-TradernetApiTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradernetApiTest.release.xcconfig"; path = "Target Support Files/Pods-TradernetApiTest/Pods-TradernetApiTest.release.xcconfig"; sourceTree = "<group>"; };
 		DF4E82CCDAFE7CF9A0841502 /* Pods-TradernetApiTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradernetApiTest.debug.xcconfig"; path = "Target Support Files/Pods-TradernetApiTest/Pods-TradernetApiTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +132,8 @@
 		CE361BC025051E4A00F0BA43 /* TradernetApiTest */ = {
 			isa = PBXGroup;
 			children = (
+				CE7BD1B725052F3000711212 /* Resources */,
+				CE7BD1AE25052A0C00711212 /* Services */,
 				CE361BC125051E4A00F0BA43 /* AppDelegate.swift */,
 				CE361BC325051E4A00F0BA43 /* SceneDelegate.swift */,
 				CE361BC525051E4A00F0BA43 /* ViewController.swift */,
@@ -151,6 +161,22 @@
 				CE361BE525051E4E00F0BA43 /* Info.plist */,
 			);
 			path = TradernetApiTestUITests;
+			sourceTree = "<group>";
+		};
+		CE7BD1AE25052A0C00711212 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE7BD1AF25052A0C00711212 /* TradernetService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE7BD1B725052F3000711212 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE7BD1B825052F3000711212 /* Settings.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +357,8 @@
 				CE361BC625051E4A00F0BA43 /* ViewController.swift in Sources */,
 				CE361BC225051E4A00F0BA43 /* AppDelegate.swift in Sources */,
 				CE361BC425051E4A00F0BA43 /* SceneDelegate.swift in Sources */,
+				CE7BD1B025052A0C00711212 /* TradernetService.swift in Sources */,
+				CE7BD1B925052F3000711212 /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,7 +366,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7BD1BA25052F3000711212 /* Settings.swift in Sources */,
 				CE361BD925051E4E00F0BA43 /* TradernetApiTestTests.swift in Sources */,
+				CE7BD1B125052A0C00711212 /* TradernetService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +376,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7BD1BB25052F3000711212 /* Settings.swift in Sources */,
 				CE361BE425051E4E00F0BA43 /* TradernetApiTestUITests.swift in Sources */,
+				CE7BD1B225052A0C00711212 /* TradernetService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
