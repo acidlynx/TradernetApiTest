@@ -20,3 +20,7 @@ Job application
 4. Make UITableView with dataSource (maybe do it in separate class)
 5. Make custom UITableViewCell to show data
 6. Make updates
+
+## Это интересно
+
+1. Биржи работают определенное время. Поэтому тикеры приходят только в рабочее время биржи

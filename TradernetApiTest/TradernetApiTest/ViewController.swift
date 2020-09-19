@@ -34,8 +34,16 @@ extension ViewController {
         TradernetApiService.default.socket.connect()
     }
     
+    /// parse data from the response and make object to show
     func showNewData(data: [Any]) {
-        debugPrint("DDDEBUG: new data: \(data)")
+        data.forEach { (dataAny) in
+            let dataArray = dataAny as! [String: Any]
+            let tickersArray = dataArray["q"] as! [Dictionary<String, Any>]
+            
+            tickersArray.forEach { (tickerDictionary) in
+                let newTickerChanges = TickerChanges(tickerDataDictionary: tickerDictionary)
+                debugPrint(newTickerChanges)
+            }
+        }
     }
 }
-
