@@ -11,10 +11,38 @@ import SnapKit
 
 class StockTableViewCell: UITableViewCell {
     let logoImageView = UIImageView()
-    let tickerIDLabel = UILabel()
-    let stockNameLabel = UILabel()
-    let tickerChangesLabel = UILabel()
-    let tickerTradesLabel = UILabel()
+
+    let tickerIDLabel: UILabel = {
+        let label = UILabel()
+        label.font = label.font.withSize(20)
+        label.textAlignment = .left
+        
+        return label
+    }()
+
+    let stockNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = label.font.withSize(12)
+        label.textAlignment = .left
+        
+        return label
+    }()
+    
+    let tickerChangesLabel: UILabel = {
+        let label = UILabel()
+        label.font = label.font.withSize(12)
+        label.textAlignment = .right
+        
+        return label
+    }()
+    
+    let tickerTradesLabel: UILabel = {
+        let label = UILabel()
+        label.font = label.font.withSize(12)
+        label.textAlignment = .right
+        
+        return label
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -38,7 +66,7 @@ extension StockTableViewCell {
     func makeLayout() {
         logoImageView.snp.makeConstraints {
             $0.top.left.equalToSuperview().offset(10)
-            $0.size.equalTo(30)
+            $0.size.equalTo(20)
         }
         
         tickerIDLabel.snp.makeConstraints { [weak logoImageView] (make) in
@@ -52,7 +80,7 @@ extension StockTableViewCell {
         stockNameLabel.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(10)
             make.bottom.equalToSuperview().offset(-10)
-            make.width.equalTo(120)
+            make.width.equalTo(300)
             make.height.equalTo(20)
         }
     }

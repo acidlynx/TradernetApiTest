@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.dataSource = self.tableDataSource
-        tableView.rowHeight = 80.0
+        tableView.rowHeight = 70.0
         tableView.backgroundColor = .red
         
         tableView.register(StockTableViewCell.self, forCellReuseIdentifier: kStockTableViewCellIdentifier)

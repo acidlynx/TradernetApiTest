@@ -37,9 +37,15 @@ class StocksCellsDataSource: NSObject, UITableViewDataSource {
         }
         
         let stock = stocksStorage[changedStockIndex]
-        stock.name = tickerChanges.name
+        if !tickerChanges.name.isEmpty {
+            stock.name = tickerChanges.name
+        }
         
-        debugPrint("DDDEBUG: stocks: \(stocksStorage)")
+        if !tickerChanges.ltr.isEmpty {
+            stock.ltr = tickerChanges.ltr
+        }
+        
+//        debugPrint("DDDEBUG: stocks: \(stocksStorage)")
     }
     
     private func indexOfStock(withTickerID tickerID: String) -> Int? {
@@ -61,7 +67,7 @@ class StocksCellsDataSource: NSObject, UITableViewDataSource {
         
         viewCell.logoImageView.sd_setImage(with: stock.logoURL(), completed: nil)
         viewCell.tickerIDLabel.text = stock.c
-        viewCell.stockNameLabel.text = stock.name
+        viewCell.stockNameLabel.text = stock.exchangeInfo()
         
         return viewCell
     }

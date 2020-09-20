@@ -9,7 +9,7 @@
 import Foundation
 
 /// Struct for define Ticker's information about changes
-class TickerChanges {
+struct TickerChanges {
     
     /// Ticker ID
     let c: String
@@ -37,5 +37,11 @@ class TickerChanges {
         self.name = (tickerDataDictionary["name"] ?? "") as! String
         self.ltp = (tickerDataDictionary["ltp"] ?? 0) as! NSNumber
         self.chg = (tickerDataDictionary["chg"] ?? 0) as! NSNumber
+    }
+}
+
+extension TickerChanges: CustomStringConvertible {
+    var description: String {
+        return "c: \(c), name: \(name)\npcp: \(pcp), ltr: \(ltr), ltp: \(ltp), chg: \(chg)"
     }
 }
