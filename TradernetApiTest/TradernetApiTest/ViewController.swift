@@ -7,12 +7,47 @@
 //
 
 import UIKit
+import SnapKit
+
+let kStockTableViewCellIdentifier = "kStockTableViewCellIdentifier"
 
 class ViewController: UIViewController {
+    // MARK: - support
+    let tableDataSource = StocksCellsDataSource()
+    
+    
+    // MARK: - views
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero)
+        tableView.dataSource = self.tableDataSource
+        tableView.rowHeight = 70.0
+        tableView.backgroundColor = .red
+        
+        tableView.register(StockTableViewCell.self, forCellReuseIdentifier: kStockTableViewCellIdentifier)
+        return tableView
+    }()
+    
+}
 
+// MARK: - UIViewController lifecycle
+extension ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addSubviews()
+        makeLayout()
+        
         connectToAPI()
+    }
+    
+    func addSubviews() {
+        view.addSubview(tableView)
+    }
+    
+    func makeLayout() {
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
 
@@ -34,7 +69,7 @@ extension ViewController {
         TradernetApiService.default.socket.connect()
     }
     
-    /// parse data from the response and make object to show
+    /// Parse data from the response and make object to show
     func showNewData(data: [Any]) {
         data.forEach { (dataAny) in
             let dataArray = dataAny as! [String: Any]
@@ -42,7 +77,7 @@ extension ViewController {
             
             tickersArray.forEach { (tickerDictionary) in
                 let newTickerChanges = TickerChanges(tickerDataDictionary: tickerDictionary)
-                debugPrint(newTickerChanges)
+                tableDataSource.changeStock(with: newTickerChanges)
             }
         }
     }

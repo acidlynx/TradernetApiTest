@@ -39,3 +39,9 @@ struct TickerChanges {
         self.chg = (tickerDataDictionary["chg"] ?? 0) as! NSNumber
     }
 }
+
+extension TickerChanges: CustomStringConvertible {
+    var description: String {
+        return "c: \(c), name: \(name)\npcp: \(pcp), ltr: \(ltr), ltp: \(ltp), chg: \(chg)"
+    }
+}
