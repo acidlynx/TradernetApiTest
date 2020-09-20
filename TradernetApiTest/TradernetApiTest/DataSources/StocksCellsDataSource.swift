@@ -18,8 +18,13 @@ class StocksCellsDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewCell = StockTableViewCell(style: .default, reuseIdentifier: kStockTableViewCellIdentifier)
         
-        viewCell.tickerIDLabel.text = "ticker"
         viewCell.logoImageView.sd_setImage(with: URL(string: "https://tradernet.ru/logos/get-logo-by-ticker?ticker=hydr"), completed: nil)
+        
+        viewCell.tickerIDLabel.text = "HYDR"
+        
+        viewCell.stockNameLabel.text = "MCX | hydra"
+        
+        
         
         return viewCell
     }

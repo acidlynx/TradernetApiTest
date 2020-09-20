@@ -48,5 +48,12 @@ extension StockTableViewCell {
             make.width.equalTo(120)
             make.height.equalTo(20)
         }
+        
+        stockNameLabel.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
+            make.width.equalTo(120)
+            make.height.equalTo(20)
+        }
     }
 }
