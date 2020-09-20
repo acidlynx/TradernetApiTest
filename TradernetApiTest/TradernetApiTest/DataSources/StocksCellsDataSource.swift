@@ -14,18 +14,30 @@ class StocksCellsDataSource: NSObject, UITableViewDataSource {
     
     /// property stores stocks array for dataSource
     var stocksStorage: [Stock] = []
+    var cellsStorage: [StockTableViewCell] = []
     
     override init() {
         super.init()
         initStocksStorage()
+        initCellsStorage()
     }
     
-    // MARK: - Work with stocks storage
-    func initStocksStorage() {
+    // MARK: - Work with storages
+    private func initStocksStorage() {
         kTickersIDsArray.forEach { [weak self]  (tickerIDString) in
             guard let self = self else { return }
             let stock = Stock(with: tickerIDString)
             self.stocksStorage.append(stock)
+        }
+    }
+    
+    private func initCellsStorage() {
+        stocksStorage.forEach { [weak self] (stock) in
+            guard let self = self else { return }
+            
+            let viewCell = StockTableViewCell(style: .default, reuseIdentifier: kStockTableViewCellIdentifier)
+            self.cellsStorage.append(viewCell)
+            viewCell.updateCell(with: stock)
         }
     }
     
@@ -45,30 +57,29 @@ class StocksCellsDataSource: NSObject, UITableViewDataSource {
             stock.ltr = tickerChanges.ltr
         }
         
-//        debugPrint("DDDEBUG: stocks: \(stocksStorage)")
+        if tickerChanges.chg != 0 {
+            stock.chg = tickerChanges.chg
+        }
+        
+        let cell = cellsStorage[changedStockIndex]
+        cell.updateCell(with: stock)
     }
     
     private func indexOfStock(withTickerID tickerID: String) -> Int? {
         return kTickersIDsArray.firstIndex(where: { $0 == tickerID })
     }
-    
+        
     // MARK: - UITableViewDataSource implementation
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stocksStorage.count
+        return cellsStorage.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let viewCell = StockTableViewCell(style: .default, reuseIdentifier: kStockTableViewCellIdentifier)
-        guard indexPath.row < stocksStorage.count else {
+        guard indexPath.row < cellsStorage.count else {
             return UITableViewCell(style: .default, reuseIdentifier: "EmptyCell")
         }
         
-        let stock = stocksStorage[indexPath.row]
-        
-        viewCell.logoImageView.sd_setImage(with: stock.logoURL(), completed: nil)
-        viewCell.tickerIDLabel.text = stock.c
-        viewCell.stockNameLabel.text = stock.exchangeInfo()
-        
+        let viewCell = cellsStorage[indexPath.row]
         return viewCell
     }
 }
