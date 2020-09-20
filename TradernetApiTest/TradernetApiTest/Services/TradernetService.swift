@@ -9,15 +9,13 @@
 import Foundation
 import SocketIO
 
-let apiURLString = "https://ws3.tradernet.ru/"
-
 open class TradernetApiService {
     public static let `default` = TradernetApiService()
     private let manager: SocketManager
     var socket: SocketIOClient
 
     private init() {
-        manager = SocketManager(socketURL: URL(string: apiURLString)!, config: [.log(true), /*.forceWebsockets(true)*/])
+        manager = SocketManager(socketURL: URL(string: kApiURLString)!, config: [.log(true)])
         socket = manager.defaultSocket
     }
 }

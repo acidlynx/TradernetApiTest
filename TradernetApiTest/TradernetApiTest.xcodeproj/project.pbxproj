@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8CC9FC762516A82D0093FDF3 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9FC752516A82D0093FDF3 /* Stock.swift */; };
+		8CC9FC772516A82D0093FDF3 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9FC752516A82D0093FDF3 /* Stock.swift */; };
+		8CC9FC782516A82D0093FDF3 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9FC752516A82D0093FDF3 /* Stock.swift */; };
+		8CC9FC7A2516A84B0093FDF3 /* TickerChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9FC792516A84B0093FDF3 /* TickerChanges.swift */; };
+		8CC9FC7B2516A84B0093FDF3 /* TickerChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9FC792516A84B0093FDF3 /* TickerChanges.swift */; };
+		8CC9FC7C2516A84B0093FDF3 /* TickerChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9FC792516A84B0093FDF3 /* TickerChanges.swift */; };
 		CE361BC225051E4A00F0BA43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE361BC125051E4A00F0BA43 /* AppDelegate.swift */; };
 		CE361BC425051E4A00F0BA43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE361BC325051E4A00F0BA43 /* SceneDelegate.swift */; };
 		CE361BC625051E4A00F0BA43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE361BC525051E4A00F0BA43 /* ViewController.swift */; };
@@ -42,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8CC9FC752516A82D0093FDF3 /* Stock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		8CC9FC792516A84B0093FDF3 /* TickerChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerChanges.swift; sourceTree = "<group>"; };
 		944A2508DB7B687D757321DD /* Pods_TradernetApiTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TradernetApiTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE361BBE25051E4A00F0BA43 /* TradernetApiTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TradernetApiTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE361BC125051E4A00F0BA43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +115,15 @@
 			path = ../Pods;
 			sourceTree = "<group>";
 		};
+		8CC9FC742516A82D0093FDF3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8CC9FC752516A82D0093FDF3 /* Stock.swift */,
+				8CC9FC792516A84B0093FDF3 /* TickerChanges.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CE361BB525051E4A00F0BA43 = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +149,7 @@
 		CE361BC025051E4A00F0BA43 /* TradernetApiTest */ = {
 			isa = PBXGroup;
 			children = (
+				8CC9FC742516A82D0093FDF3 /* Models */,
 				CE7BD1B725052F3000711212 /* Resources */,
 				CE7BD1AE25052A0C00711212 /* Services */,
 				CE361BC125051E4A00F0BA43 /* AppDelegate.swift */,
@@ -355,7 +373,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE361BC625051E4A00F0BA43 /* ViewController.swift in Sources */,
+				8CC9FC762516A82D0093FDF3 /* Stock.swift in Sources */,
 				CE361BC225051E4A00F0BA43 /* AppDelegate.swift in Sources */,
+				8CC9FC7A2516A84B0093FDF3 /* TickerChanges.swift in Sources */,
 				CE361BC425051E4A00F0BA43 /* SceneDelegate.swift in Sources */,
 				CE7BD1B025052A0C00711212 /* TradernetService.swift in Sources */,
 				CE7BD1B925052F3000711212 /* Settings.swift in Sources */,
@@ -367,6 +387,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7BD1BA25052F3000711212 /* Settings.swift in Sources */,
+				8CC9FC7B2516A84B0093FDF3 /* TickerChanges.swift in Sources */,
+				8CC9FC772516A82D0093FDF3 /* Stock.swift in Sources */,
 				CE361BD925051E4E00F0BA43 /* TradernetApiTestTests.swift in Sources */,
 				CE7BD1B125052A0C00711212 /* TradernetService.swift in Sources */,
 			);
@@ -377,6 +399,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7BD1BB25052F3000711212 /* Settings.swift in Sources */,
+				8CC9FC7C2516A84B0093FDF3 /* TickerChanges.swift in Sources */,
+				8CC9FC782516A82D0093FDF3 /* Stock.swift in Sources */,
 				CE361BE425051E4E00F0BA43 /* TradernetApiTestUITests.swift in Sources */,
 				CE7BD1B225052A0C00711212 /* TradernetService.swift in Sources */,
 			);

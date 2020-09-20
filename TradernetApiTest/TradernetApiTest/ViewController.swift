@@ -19,12 +19,11 @@ class ViewController: UIViewController {
 extension ViewController {
     func connectToAPI() {
         TradernetApiService.default.socket.on(clientEvent: .connect) { (data, ack) in
-            debugPrint("DDDEBUG: socket connected")
             TradernetApiService.default.socket.emit("sup_updateSecurities2", with: [kTickersIDsArray])
         }
         
         TradernetApiService.default.socket.on(clientEvent: .error) { (data, ack) in
-            debugPrint("error with data:\(data)")
+            debugPrint("ERROR with data:\(data)")
         }
         
         TradernetApiService.default.socket.on("q") { [weak self] (data, ack) in
@@ -35,8 +34,16 @@ extension ViewController {
         TradernetApiService.default.socket.connect()
     }
     
+    /// parse data from the response and make object to show
     func showNewData(data: [Any]) {
-        debugPrint("DDDEBUG: new data: \(data)")
+        data.forEach { (dataAny) in
+            let dataArray = dataAny as! [String: Any]
+            let tickersArray = dataArray["q"] as! [Dictionary<String, Any>]
+            
+            tickersArray.forEach { (tickerDictionary) in
+                let newTickerChanges = TickerChanges(tickerDataDictionary: tickerDictionary)
+                debugPrint(newTickerChanges)
+            }
+        }
     }
 }
-
