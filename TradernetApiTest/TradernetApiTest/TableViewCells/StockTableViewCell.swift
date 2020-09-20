@@ -59,10 +59,11 @@ class StockTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    func setupTickerChanges(with number: NSNumber) {
+    /// setup label with
+    private func setupTickerChanges(with number: NSNumber) {
         switch number.compare(NSNumber(value: 0)) {
         case .orderedSame:
-            tickerTradesLabel.text = ""
+            tickerChangesLabel.text = ""
         case .orderedAscending:
             tickerChangesLabel.text = "\(number)%"
             tickerChangesLabel.textColor = .red
@@ -71,12 +72,14 @@ class StockTableViewCell: UITableViewCell {
             tickerChangesLabel.textColor = .green
         }
     }
-
+    
     func updateCell(with stock: Stock) {
         logoImageView.sd_setImage(with: stock.logoURL(), completed: nil)
         tickerIDLabel.text = stock.c
         stockNameLabel.text = stock.exchangeInfo()
-        setupTickerChanges(with: stock.chg)
+        
+        setupTickerChanges(with: stock.pcp)
+        tickerTradesLabel.text = stock.lastTradeInfo()
     }
 
 }

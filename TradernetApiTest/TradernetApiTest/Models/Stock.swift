@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Struct for define Stock's information
+/// Class (for ref-type mapping with cells) for define Stock's information
 class Stock {
     
     /// Ticker ID
@@ -46,6 +46,15 @@ class Stock {
         }
         
         return returnValue
+    }
+    
+    /// returns summary about last trade
+    func lastTradeInfo() -> String {
+        if ltp == 0 {
+            return ""
+        }
+        
+        return "\(ltp) (\(chg))"
     }
 }
 

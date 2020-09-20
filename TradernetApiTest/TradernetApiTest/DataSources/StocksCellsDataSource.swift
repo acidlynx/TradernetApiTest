@@ -41,6 +41,7 @@ class StocksCellsDataSource: NSObject, UITableViewDataSource {
         }
     }
     
+    /// Save new values, update cells
     func changeStock(with tickerChanges: TickerChanges) {
         debugPrint(tickerChanges)
         guard let changedStockIndex = indexOfStock(withTickerID: tickerChanges.c) else {
@@ -55,6 +56,14 @@ class StocksCellsDataSource: NSObject, UITableViewDataSource {
         
         if !tickerChanges.ltr.isEmpty {
             stock.ltr = tickerChanges.ltr
+        }
+        
+        if tickerChanges.pcp != 0 {
+            stock.pcp = tickerChanges.pcp
+        }
+        
+        if tickerChanges.ltp != 0 {
+            stock.ltp = tickerChanges.ltp
         }
         
         if tickerChanges.chg != 0 {
