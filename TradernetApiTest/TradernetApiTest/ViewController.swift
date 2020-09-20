@@ -77,7 +77,7 @@ extension ViewController {
             
             tickersArray.forEach { (tickerDictionary) in
                 let newTickerChanges = TickerChanges(tickerDataDictionary: tickerDictionary)
-                debugPrint(newTickerChanges)
+                tableDataSource.changeStock(with: newTickerChanges)
             }
         }
     }

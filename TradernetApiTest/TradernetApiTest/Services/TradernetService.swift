@@ -15,7 +15,7 @@ open class TradernetApiService {
     var socket: SocketIOClient
 
     private init() {
-        manager = SocketManager(socketURL: URL(string: kApiURLString)!, config: [.log(true)])
+        manager = SocketManager(socketURL: URL(string: kApiURLString)!, config: [.log(false)])
         socket = manager.defaultSocket
     }
 }

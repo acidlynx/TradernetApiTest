@@ -9,7 +9,7 @@
 import Foundation
 
 /// Struct for define Ticker's information about changes
-struct TickerChanges {
+class TickerChanges {
     
     /// Ticker ID
     let c: String
