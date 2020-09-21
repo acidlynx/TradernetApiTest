@@ -59,6 +59,7 @@ class StocksCellsDataSource: NSObject, UITableViewDataSource {
         }
         
         if tickerChanges.pcp != 0 {
+            stock.growType = tickerChanges.pcp.compare(stock.pcp)
             stock.pcp = tickerChanges.pcp
         }
         

@@ -20,6 +20,9 @@ class Stock {
     /// Percentage change relative to the closing price of the previous trading session
     var pcp: NSNumber = 0
     
+    /// Type of growing of price (in compare with previous value of property .pcp)
+    var growType: ComparisonResult = .orderedSame
+    
     /// Last trade exchange
     var ltr: String = ""
         
