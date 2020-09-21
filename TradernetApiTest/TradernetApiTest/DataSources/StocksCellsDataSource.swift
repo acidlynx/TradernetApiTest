@@ -45,7 +45,7 @@ class StocksCellsDataSource: NSObject, UITableViewDataSource {
     func changeStock(with tickerChanges: TickerChanges) {
         debugPrint(tickerChanges)
         guard let changedStockIndex = indexOfStock(withTickerID: tickerChanges.c) else {
-            debugPrint("ERROR: ticker did not exist")
+            debugPrint("ERROR: ticker is not exist")
             return
         }
         
@@ -59,8 +59,15 @@ class StocksCellsDataSource: NSObject, UITableViewDataSource {
         }
         
         if tickerChanges.pcp != 0 {
-            stock.growType = tickerChanges.pcp.compare(stock.pcp)
-            stock.pcp = tickerChanges.pcp
+            if stock.pcp == 0 {
+                // initial value
+                stock.growType = .orderedSame
+                stock.pcp = tickerChanges.pcp
+            } else {
+                // changed value
+                stock.growType = tickerChanges.pcp.compare(stock.pcp)
+                stock.pcp = tickerChanges.pcp
+            }
         }
         
         if tickerChanges.ltp != 0 {
