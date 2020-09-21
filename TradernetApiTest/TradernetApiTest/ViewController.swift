@@ -21,12 +21,10 @@ class ViewController: UIViewController {
         let tableView = UITableView(frame: .zero)
         tableView.dataSource = self.tableDataSource
         tableView.rowHeight = 70.0
-        tableView.backgroundColor = .red
         
         tableView.register(StockTableViewCell.self, forCellReuseIdentifier: kStockTableViewCellIdentifier)
         return tableView
     }()
-    
 }
 
 // MARK: - UIViewController lifecycle

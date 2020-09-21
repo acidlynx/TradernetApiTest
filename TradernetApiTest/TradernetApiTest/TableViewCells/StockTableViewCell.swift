@@ -34,7 +34,9 @@ class StockTableViewCell: UITableViewCell {
     let tickerChangesLabel: UILabel = {
         let label = UILabel()
         label.font = label.font.withSize(20)
-        label.textAlignment = .right
+        label.textAlignment = .center
+        label.layer.masksToBounds = true
+        label.layer.cornerRadius = 5
         
         return label
     }()
@@ -59,24 +61,38 @@ class StockTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    func setupTickerChanges(with number: NSNumber) {
-        switch number.compare(NSNumber(value: 0)) {
-        case .orderedSame:
-            tickerTradesLabel.text = ""
-        case .orderedAscending:
+    /// setup label with
+    private func setupTickerChanges(with number: NSNumber, growType: ComparisonResult = .orderedSame) {
+        if growType == .orderedSame {
+            tickerChangesLabel.backgroundColor = .clear
+            switch number.compare(NSNumber(value: 0)) {
+            case .orderedSame:
+                tickerChangesLabel.text = ""
+            case .orderedAscending:
+                tickerChangesLabel.text = "\(number)%"
+                tickerChangesLabel.textColor = .red
+            case .orderedDescending:
+                tickerChangesLabel.text = "\(number)%"
+                tickerChangesLabel.textColor = .green
+            }
+        } else if growType == .orderedAscending {
+            tickerChangesLabel.backgroundColor = .green
+            tickerChangesLabel.textColor = .white
             tickerChangesLabel.text = "\(number)%"
-            tickerChangesLabel.textColor = .red
-        case .orderedDescending:
+        } else if growType == .orderedDescending {
+            tickerChangesLabel.backgroundColor = .red
+            tickerChangesLabel.textColor = .white
             tickerChangesLabel.text = "\(number)%"
-            tickerChangesLabel.textColor = .green
         }
     }
-
+    
     func updateCell(with stock: Stock) {
         logoImageView.sd_setImage(with: stock.logoURL(), completed: nil)
         tickerIDLabel.text = stock.c
         stockNameLabel.text = stock.exchangeInfo()
-        setupTickerChanges(with: stock.chg)
+        
+        setupTickerChanges(with: stock.pcp, growType: stock.growType)
+        tickerTradesLabel.text = stock.lastTradeInfo()
     }
 
 }
@@ -119,7 +135,7 @@ extension StockTableViewCell {
         tickerChangesLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
             $0.right.equalToSuperview().offset(-10)
-            $0.width.equalTo(120)
+            $0.width.equalTo(70)
             $0.height.equalTo(20)
         }
         

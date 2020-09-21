@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Struct for define Stock's information
+/// Class (for ref-type mapping with cells) for define Stock's information
 class Stock {
     
     /// Ticker ID
@@ -19,6 +19,9 @@ class Stock {
     
     /// Percentage change relative to the closing price of the previous trading session
     var pcp: NSNumber = 0
+    
+    /// Type of growing of price (in compare with previous value of property .pcp)
+    var growType: ComparisonResult = .orderedSame
     
     /// Last trade exchange
     var ltr: String = ""
@@ -46,6 +49,15 @@ class Stock {
         }
         
         return returnValue
+    }
+    
+    /// returns summary about last trade
+    func lastTradeInfo() -> String {
+        if ltp == 0 {
+            return ""
+        }
+        
+        return "\(ltp) (\(chg))"
     }
 }
 
