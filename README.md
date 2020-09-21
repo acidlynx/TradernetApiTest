@@ -12,6 +12,10 @@ Job application
 1. `pod install`
 2. `open TrendernetApiTest.xcworkspace`
 
+## Used dependencies
+
+- see at `Podfile`
+
 ## To Do
 
 1. ~~Connect to socket~~
@@ -20,11 +24,10 @@ Job application
 4. ~~Make UITableView with dataSource (maybe do it in separate class)~~
 5. ~~Make custom UITableViewCell to show data~~
 6. ~~Make updates~~
-7. Add related info
+7. ~~Add related info~~
 
 ## Что не сделано
 
-- Красная и зеленая подсветка при изменении значения процентов
 - Получение списка котировок
 - Округление выводимых значений цены и изменения цены до `min_step`
 
